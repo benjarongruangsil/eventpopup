@@ -43,13 +43,42 @@
 <div class="columns">
 <div class="column"></div>
     <div class="column is-three-quarters">
-    sdfffffffffffff
-    </div>
 
+      <article class="message is-dark">
+          <div class="message-body">
+                <img src="../assets/logo3.png" alt="" style="width: 100%; height: 50%;"></br>
+                sdfsdf
+          </div>
+      </article>
+
+      <article class="message is-dark">
+          <div class="message-body">
+            Description</br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+          </div>
+      </article>
+
+      <article class="message is-dark">
+          <div class="message-body">
+           <strong>Tickets</strong></br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+          </div>
+      </article>
+
+    </div>
 
 <div class="column"></div>
 </div>
 </div>
+
+
+<!-- ----------------------------------- -->
+
+<div class=""  v-for = "(post, key, count) in showpost">
+
+  {{post.name}} {{count}}
+</div>
+
 <!-- จบส่วนของข้อมูล -->
 
 
