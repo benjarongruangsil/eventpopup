@@ -43,31 +43,12 @@
 <div class="columns">
 <div class="column"></div>
     <div class="column is-three-quarters">
-      <div class="columns" >
-        <div class="column">
-
-            <div class="" style="width: 30%; float: left; margin-left: 2%;" v-for = "(post, key, count) in showpost"  >
-                <router-link to="/Tickets">
-              <article class="message is-dark" >
-              <div class="message-body">
-                <figure class="image is-square">
-                 <img src="https://bulma.io/images/placeholders/256x256.png">
-                </figure>
-                <strong>{{post.name}} {{count+1}}</strong><br></br>
-                  <i class="fa fa-clock-o"></i> {{post.startdate}} | {{post.starttime}} - {{post.starttime}}  </br>
-                  <i class="fa fa-map-marker"></i> {{post.location}}
-            </div> </br>
-            </article>
-            </router-link>
-          </div>
-        </div>
-      </div>
+    sdfffffffffffff
     </div>
 
 
 <div class="column"></div>
 </div>
-
 </div>
 <!-- จบส่วนของข้อมูล -->
 

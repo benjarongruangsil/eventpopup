@@ -7,11 +7,8 @@ import store from './store'
 import { sync } from 'vuex-router-sync'
 import Buefy from 'buefy'
 import 'buefy/lib/buefy.css'
-
 sync(store, router)
-
 Vue.use(Buefy)
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

@@ -5,7 +5,7 @@
 <nav class="navbar" role="navigation" aria-label="dropdown navigation">
 <a class="navbar-item">
   <router-link to="/">
-<img src="../assets/logo3.png" alt="" height="500" width=""> </router-link></a>
+<img src="../assets/logo3.png" alt="" height="500" width=""> </router-link> </a>
 <p class="navbar-item">
   <input class="input" type="text" placeholder="Amount of money">
   <span class="icon is-small is-right"><p></p><i class="fa fa-search"></i></span></p>
@@ -45,9 +45,7 @@
     <div class="column is-three-quarters">
       <div class="columns" >
         <div class="column">
-
             <div class="" style="width: 30%; float: left; margin-left: 2%;" v-for = "(post, key, count) in showpost"  >
-                <router-link to="/Tickets">
               <article class="message is-dark" >
               <div class="message-body">
                 <figure class="image is-square">
@@ -56,9 +54,21 @@
                 <strong>{{post.name}} {{count+1}}</strong><br></br>
                   <i class="fa fa-clock-o"></i> {{post.startdate}} | {{post.starttime}} - {{post.starttime}}  </br>
                   <i class="fa fa-map-marker"></i> {{post.location}}
-            </div> </br>
+                </br></br></br>
+                      <p class="button is-success  is-outlined">
+                        <span>Update</span>
+                        <span class="icon is-small">
+                            <i class="fa fa-refresh"></i>
+                          </span>
+                    </p>
+                    <p class="button is-danger is-outlined" style=" float:right;">
+                       <span>Delete</span>
+                         <span class="icon is-small">
+                           <i class="fa fa-trash"></i>
+                         </span>
+                   </p>
+            </div>
             </article>
-            </router-link>
           </div>
         </div>
       </div>
@@ -67,11 +77,8 @@
 
 <div class="column"></div>
 </div>
-
 </div>
 <!-- จบส่วนของข้อมูล -->
-
-
   </div>
     <!-- <a @click="logout"><h1 class="title is-1">Logout</h1></a> -->
 </template>
@@ -84,7 +91,8 @@ export default {
   data () {
     return {
       newPostInput: '',
-      showpost: ''
+      showpost: '',
+      nameuser: ''
     }
   },
   computed: {
@@ -105,7 +113,8 @@ export default {
     },
     pullData: function () {  /* แสดงpost */
       let that = this
-      firebase.database().ref('/event/post/').once('value').then(function (snapshot) {
+      this.nameuser = this.user.displayName
+      firebase.database().ref('event/user/' + this.nameuser).once('value').then(function (snapshot) {
         that.showpost = snapshot.val()
       })
     }
