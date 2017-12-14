@@ -1,5 +1,5 @@
 <template >
-  <div>
+  <div id="home">
 <section class="hero is-primary">
 <!-- startmenu -->
 <nav class="navbar" role="navigation" aria-label="dropdown navigation">
@@ -47,17 +47,17 @@
         <div class="column">
 
             <div class="" style="width: 30%; float: left; margin-left: 2%;" v-for = "(post, key, count) in showpost"  >
-                <router-link to="/Tickets">
-              <article class="message is-dark" >
-              <div class="message-body">
-                <figure class="image is-square">
-                 <img src="https://bulma.io/images/placeholders/256x256.png">
-                </figure>
-                <strong>{{post.name}} {{count+1}}</strong><br></br>
-                  <i class="fa fa-clock-o"></i> {{post.startdate}} | {{post.starttime}} - {{post.starttime}}  </br>
-                  <i class="fa fa-map-marker"></i> {{post.location}}
-            </div> </br>
-            </article>
+              <router-link :to="{ name: 'tickets', params: { userID : key }}">
+                <article class="message is-dark" >
+                <div class="message-body">
+                  <figure class="image is-square">
+                   <img src="https://bulma.io/images/placeholders/256x256.png">
+                  </figure>
+                  <strong>{{post.name}} {{count+1}}</strong><br></br>
+                    <i class="fa fa-clock-o"></i> {{post.startdate}} | {{post.starttime}} - {{post.starttime}}  </br>
+                    <i class="fa fa-map-marker"></i> {{post.location}}
+                  </div> </br>
+              </article>
             </router-link>
           </div>
         </div>
@@ -77,10 +77,14 @@
 </template>
 
 <script>
+import tickets from './Tickets.vue'
 import { mapGetters, mapActions } from 'vuex'
 import firebase from 'firebase'
 export default {
   name: 'home',
+  components: {
+    tickets
+  },
   data () {
     return {
       newPostInput: '',

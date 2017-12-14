@@ -236,7 +236,8 @@ export default {
         amount: '',
         price: '',
         photo: '',
-        description: ''
+        description: '',
+        users: ''
       },
       nameuser: ''
     }
@@ -260,6 +261,7 @@ export default {
     addevent () {
       console.log('pass')
       this.nameuser = this.user.displayName
+      this.data.users = this.user.displayName
       firebase.database().ref('event/post/').push(this.data)
       firebase.database().ref('event/user/' + this.nameuser).push(this.data)
       alert('Add event Complete')

@@ -46,6 +46,7 @@
       <div class="columns" >
         <div class="column">
             <div class="" style="width: 30%; float: left; margin-left: 2%;" v-for = "(post, key, count) in showpost"  >
+                <div class="" v-if= "user.displayName === post.users">
               <article class="message is-dark" >
               <div class="message-body">
                 <figure class="image is-square">
@@ -61,14 +62,14 @@
                             <i class="fa fa-refresh"></i>
                           </span>
                     </p>
-                    <p class="button is-danger is-outlined" style=" float:right;">
+                    <p class="button is-danger is-outlined" style=" float:right;"  @click="delete1(key)">
                        <span>Delete</span>
                          <span class="icon is-small">
                            <i class="fa fa-trash"></i>
                          </span>
                    </p>
             </div>
-            </article>
+            </article></div>
           </div>
         </div>
       </div>
@@ -114,9 +115,15 @@ export default {
     pullData: function () {  /* แสดงpost */
       let that = this
       this.nameuser = this.user.displayName
-      firebase.database().ref('event/user/' + this.nameuser).once('value').then(function (snapshot) {
+      firebase.database().ref('/event/post/').once('value').then(function (snapshot) {
         that.showpost = snapshot.val()
       })
+    },
+    delete1 (key) {  /* แสดงpost */
+      alert('Delete Admin Complete')
+      this.nameuser = this.user.displayName
+      firebase.database().ref('/event/post/').child(key).remove()
+      this.pullData()
     }
   },
   created () {

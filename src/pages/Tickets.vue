@@ -1,5 +1,5 @@
 <template >
-  <div>
+  <div id="tickets">
 <section class="hero is-primary">
 <!-- startmenu -->
 <nav class="navbar" role="navigation" aria-label="dropdown navigation">
@@ -45,7 +45,7 @@
     <div class="column is-three-quarters">
 
       <div class=""  v-for = "(post, key) in showpost">
-        <div class="" v-if= "post.name ==='THE BANGKOK COUNTDOWN 2018'">
+        <div class="" v-if= " key ===$route.params.userID">
           <article class="message is-dark">
               <div class="message-body">
                     <img src="../assets/logo3.png" alt="" style="width: 100%; height: 50%;"></br>
@@ -129,8 +129,19 @@
                             </div>
                       </div>
                     </div></br></br>
-                      *Some fees may be applied
-                      </br></br>
+
+                            <div class="columns">
+                              <div class="column">
+                              *Some fees may be applied
+                              </div>
+
+                              <div class="column">
+                                <p class="button is-primary"  style=" float: right; ">
+                                    <span>Buy Ticksts</span>
+                                  </p>
+                              </div>
+                            </div>
+                      </br>
               </div>
 
           </article>
@@ -153,7 +164,8 @@
 import { mapGetters, mapActions } from 'vuex'
 import firebase from 'firebase'
 export default {
-  name: 'home',
+  name: 'tickets',
+  props: ['userID'],
   data () {
     return {
       newPostInput: '',
@@ -186,19 +198,10 @@ export default {
   created () {
     this.setPostRef()
     this.pullData()
+    console.log(this.userID + 'ff')
   },
   destroyed () {
     this.unSetPostRef()
-  },
-  prompt () {
-    this.$dialog.prompt({
-      message: 'What s your name?',
-      inputAttrs: {
-        placeholder: 'e.g. Walter',
-        maxlength: 10
-      },
-      onConfirm: (value) => this.$toast.open(`Your name is: ${value}`)
-    })
   }
 }
 </script>
