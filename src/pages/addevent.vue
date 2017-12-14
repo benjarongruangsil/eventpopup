@@ -202,7 +202,8 @@
                   <div class="field-body">
                   <div class="field">
                   <div class="control">
-                    <button class="button is-primary" @click="addevent()"> Send Event  </button>
+                    <button class="button is-success  is-outlined" @click="addevent()"> Send Event  </button>
+                    <button class="button is-danger is-outlined" @click="clear()"> Clear  </button>
                   </div>
                   </div>
                   </div>
@@ -262,6 +263,9 @@ export default {
       firebase.database().ref('event/post/').push(this.data)
       firebase.database().ref('event/user/' + this.nameuser).push(this.data)
       alert('Add event Complete')
+      this.data = ''
+    },
+    clear () {
       this.data = ''
     }
   },
