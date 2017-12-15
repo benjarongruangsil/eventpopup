@@ -53,7 +53,7 @@
 <!-- จบส่วนของข้อมูล -->
 <br>
 <br>
-<center> <img src="https://bulma.io/images/placeholders/640x480.png"> </center>
+<center> <img src="http://kkfund.co/img/portfolio/EventPop.png"> </center>
   </div>
 </template>
 <script>
