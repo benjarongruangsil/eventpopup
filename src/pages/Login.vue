@@ -44,7 +44,7 @@
         <span class="icon">
           <i class="fa fa-facebook-square"></i>
         </span>
-        <span>facebook</span>
+        <span>Login with facebook</span>
       </p>
     </p>
   </div>
