@@ -38,7 +38,7 @@
 <div class="columns">
   <div class="column"></div>
   <div class="column is-two-thirds">
-    <article class="message is-dark">
+    <article class="message  is-danger">
       <div class="message-header">
         <p>ADD EVENT POP</p>
       </div>

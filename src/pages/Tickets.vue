@@ -78,7 +78,7 @@
                         <div class="field">
                               <div class="control">
                                 <div class="select is-primary">
-                                  <select >
+                                  <select v-model = "bye">
                                     <option v-for="n in 6">{{n-1}}</option>
                                   </select>
                                 </div>
@@ -92,7 +92,7 @@
                               *Some fees may be applied
                               </div>
 
-                              <div class="column">
+                              <div class="column" @click="buy(key, bye)">
                                 <p class="button is-primary"  style=" float: right; ">
                                     <span>Buy Ticksts</span>
                                   </p>
@@ -125,7 +125,9 @@ export default {
   data () {
     return {
       newPostInput: '',
-      showpost: ''
+      showpost: '',
+      bye: '',
+      oldBalance: 0
     }
   },
   computed: {
@@ -148,6 +150,19 @@ export default {
       let that = this
       firebase.database().ref('/event/post/').once('value').then(function (snapshot) {
         that.showpost = snapshot.val()
+      })
+    },
+    buy (key, bye) {
+      this.oldBalance = 0
+      firebase.database().ref('event/post/').child(key).child('amount').transaction(data => {
+        console.log(data)
+        if (data) {
+          this.oldBalance = data
+          if (this.oldBalance >= bye) {
+            return data - bye
+          }
+        }
+        return data
       })
     }
   },
