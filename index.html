@@ -23,6 +23,24 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Split button -->
+<script type="text/javascript">
+var i=0;
+function ImageSlide(){
+var imgList = new Array();
+imgList[0] ="slide/photo1.jpg";
+imgList[1] ="slide/photo2.jpg";
+imgList[2] ="slide/photo3.jpg";
+imgList[3] ="slide/photo4.jpg";
+imgList[4] ="slide/photo5.jpg";
+var slideImg = document.getElementById("imgOutput")
+slideImg.src = imgList[i];
+var delayTime = setTimeout("ImageSlide()",2500);
+i=i+1;
+if (i>=5){
+i=0;
+}
+}
+</script>
   </head>
   <body>
     <div id="app"></div>

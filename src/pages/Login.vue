@@ -1,8 +1,9 @@
 <template lang="html">
   <div class="login--container">
+
   <section class="hero is-primary">
     <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-  
+
   <div class="navbar-end">
 
 </br>
@@ -13,6 +14,7 @@
     <div class="column is-three-quarters">
       <div class="columns" >
         <div class="column">
+
             <div class="" style="width: 30%; float: left; margin-left: 2%;" v-for = "(post, key, count) in showpost"  >
               <article class="message is-dark" >
               <div class="message-body">
@@ -28,12 +30,12 @@
         </div>
       </div>
     </div>
+
+
 <div class="column"></div>
 </div>
 </div>
 <!-- จบส่วนของข้อมูล -->
-<<<<<<< HEAD
-=======
 <br>
 <br>
 <center> <img src="http://kkfund.co/img/portfolio/EventPop.png"> </center>
@@ -52,9 +54,7 @@
 </div>
 </nav>
 </section>
->>>>>>> 8d1787282c8d46d2c0e85447683f7c90b92a38eb
   </div>
-
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex'
