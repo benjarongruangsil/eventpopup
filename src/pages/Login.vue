@@ -51,7 +51,9 @@
 </div>
 </div>
 <!-- จบส่วนของข้อมูล -->
-
+<br>
+<br>
+<center> <img src="https://bulma.io/images/placeholders/640x480.png"> </center>
   </div>
 </template>
 <script>
