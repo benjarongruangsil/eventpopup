@@ -179,7 +179,7 @@
                             <figure class="image is-128x128">
                               <img :src="data.image">
                             </figure> </br>
-                            <button @click="removeImage">Remove image</button>
+                            <button class="button is-danger is-outlined" @click="removeImage">Remove image</button>
                           </div>
                         </div>
                     </div>
