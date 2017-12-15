@@ -3,7 +3,7 @@
 
   <section class="hero is-primary">
     <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-  
+
   <div class="navbar-end">
 
 </br>
@@ -30,8 +30,6 @@
         </div>
       </div>
     </div>
-
-
 <div class="column"></div>
 </div>
 </div>
@@ -46,7 +44,7 @@
         <span class="icon">
           <i class="fa fa-facebook-square"></i>
         </span>
-        <span>facebook</span>
+        <span>Login with facebook</span>
       </p>
     </p>
   </div>
