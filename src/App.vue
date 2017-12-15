@@ -6,7 +6,7 @@
                 </span>
                 <span v-else @click="goBack()" class="is-pointer">
                 </span>
-              
+
               </div>
               <router-view></router-view>
 
