@@ -92,9 +92,14 @@
                               *Some fees may be applied
                               </div>
 
-                              <div class="column" @click="buy(key, bye)">
+                              <div class="column" v-if ="post.amount > 1 " @click="buy(key, bye)">
                                 <p class="button is-primary"  style=" float: right; ">
                                     <span>Buy Ticksts</span>
+                                  </p>
+                              </div>
+                              <div class="column" v-else >
+                                <p class="button is-primary" title="Disabled button" disabled style=" float: right; ">
+                                    <span>Buy Tickstssss</span>
                                   </p>
                               </div>
                             </div>

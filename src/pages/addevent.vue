@@ -164,16 +164,8 @@
                   <div class="control">
                     <div class="field">
                       <div class="file is-boxed">
-                        <input class="file-input" type="file">
-                        <input name="myFile" type="file" @change="onFileChange($event.target.files[0])">
-                      </div>
-                    </div>
-                  </div>
-                  <!-- <div class="control">
-                    <div class="field">
-                      <div class="file is-boxed">
-                          <label class="file-label"  v-if="!data.image">
-                            <input class="file-input" type="file" name="resume" @change="onFileChange">
+                          <label class="file-label">
+                            <input class="file-input" type="file" name="resume"  @change="onFileChange($event.target.files[0])">
                             <span class="file-cta">
                               <span class="file-icon">
                                 <i class="fa fa-upload"></i>
@@ -183,15 +175,9 @@
                               </span>
                             </span>
                           </label>
-                          <div v-else>
-                            <figure class="image is-128x128">
-                              <img :src="data.image">
-                            </figure> </br>
-                            <button class="button is-danger is-outlined" @click="removeImage">Remove image</button>
-                          </div>
                         </div>
                     </div>
-                  </div> -->
+                  </div>
                   </div>
                   </div>
                   </div>

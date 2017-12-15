@@ -33,7 +33,14 @@
   1as
 </div>
 </nav>
+
 <!-- endstartmenu -->
+<!-- startimg -->
+
+
+
+
+    <!-- endtimg -->
 </section>
 </br>
 <!-- ส่วนของข้อมูล -->
@@ -43,7 +50,6 @@
     <div class="column is-three-quarters">
       <div class="columns" >
         <div class="column">
-
             <div class="" style="width: 30%; float: left; margin-left: 2%;" v-for = "(post, key, count) in showpost"  >
               <router-link :to="{ name: 'tickets', params: { userID : key }}">
                 <article class="message is-dark" >
@@ -54,8 +60,8 @@
                   <strong>{{post.name}}</strong><br></br>
                     <i class="fa fa-clock-o"></i> {{post.startdate}} | {{post.starttime}} - {{post.starttime}}  </br>
                     <i class="fa fa-map-marker"></i> {{post.location}}
-                  </div> </br>
-              </article>
+                  </div>
+              </article> </br>
             </router-link>
           </div>
         </div>
@@ -65,8 +71,6 @@
 </div>
 </div>
 <!-- จบส่วนของข้อมูล -->
-
-
   </div>
     <!-- <a @click="logout"><h1 class="title is-1">Logout</h1></a> -->
 </template>
@@ -108,6 +112,7 @@ export default {
   created () {
     this.setPostRef()
     this.pullData()
+    this.carousel()
   },
   destroyed () {
     this.unSetPostRef()
