@@ -164,8 +164,8 @@
                   <div class="control">
                     <div class="field">
                       <div class="file is-boxed">
-                          <label class="file-label">
-                            <input class="file-input" type="file" name="resume" @change="data.photo" v-on="data.photo">
+                          <label class="file-label"  v-if="!data.image">
+                            <input class="file-input" type="file" name="resume" @change="onFileChange">
                             <span class="file-cta">
                               <span class="file-icon">
                                 <i class="fa fa-upload"></i>
@@ -175,6 +175,12 @@
                               </span>
                             </span>
                           </label>
+                          <div v-else>
+                            <figure class="image is-128x128">
+                              <img :src="data.image">
+                            </figure> </br>
+                            <button class="button is-danger is-outlined" @click="removeImage">Remove image</button>
+                          </div>
                         </div>
                     </div>
                   </div>
@@ -235,9 +241,10 @@ export default {
         endtime: '',
         amount: '',
         price: '',
-        photo: '',
+        image: '',
         description: '',
         users: ''
+
       },
       nameuser: ''
     }
@@ -269,6 +276,21 @@ export default {
     },
     clear () {
       this.data = ''
+    },
+    onFileChange (e) {
+      var files = e.target.files
+      this.createImage(files[0])
+    },
+    createImage (file) {
+      let reader = new FileReader()
+      reader.onload = (e) => {
+        this.data.image = e.target.result
+        console.log(this.data.image)
+      }
+      reader.readAsDataURL(file)
+    },
+    removeImage: function (e) {
+      this.data.image = ''
     }
   },
   created () {
