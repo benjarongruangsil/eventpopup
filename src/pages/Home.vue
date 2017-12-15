@@ -41,10 +41,10 @@
 <div class="">
 <div class="columns">
 <div class="column"></div>
-
     <div class="column is-three-quarters">
       <div class="columns" >
         <div class="column">
+
             <div class="" style="width: 30%; float: left; margin-left: 2%;" v-for = "(post, key, count) in showpost"  >
               <router-link :to="{ name: 'tickets', params: { userID : key }}">
                 <article class="message is-dark" >
