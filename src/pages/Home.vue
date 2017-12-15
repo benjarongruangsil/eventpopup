@@ -69,20 +69,18 @@
 </div>
 
 </div>
+
 <!-- จบส่วนของข้อมูล -->
+
   </div>
     <!-- <a @click="logout"><h1 class="title is-1">Logout</h1></a> -->
 </template>
 
 <script>
-import tickets from './Tickets.vue'
 import { mapGetters, mapActions } from 'vuex'
 import firebase from 'firebase'
 export default {
   name: 'home',
-  components: {
-    tickets
-  },
   data () {
     return {
       newPostInput: '',
@@ -109,6 +107,16 @@ export default {
       let that = this
       firebase.database().ref('/event/post/').once('value').then(function (snapshot) {
         that.showpost = snapshot.val()
+      })
+    },
+    confirmCustomDelete () {
+      this.$dialog.confirm({
+        title: 'Deleting account',
+        message: 'Are you sure you want to <b>delete</b> your account? This action cannot be undone.',
+        confirmText: 'Delete Account',
+        type: 'is-danger',
+        hasIcon: true,
+        onConfirm: () => this.$toast.open('Account deleted!')
       })
     }
   },
