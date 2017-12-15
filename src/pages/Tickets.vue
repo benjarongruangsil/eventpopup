@@ -7,8 +7,6 @@
   <router-link to="/">
 <img src="../assets/logo3.png" alt="" height="500" width=""> </router-link></a>
 <p class="navbar-item">
-  <input class="input" type="text" placeholder="---- Search ----">&nbsp&nbsp&nbsp&nbsp
-  <span class="icon is-small is-right"><p></p><i class="fa fa-search"></i></span></p>
 <div class="navbar-menu">
   <div class="navbar-end">
     <div class="navbar-item">
@@ -47,7 +45,7 @@
         <div class="" v-if= " key ===$route.params.userID">
           <article class="message is-dark">
               <div class="message-body">
-                    <img src="../assets/logo3.png" alt="" style="width: 100%; height: 50%;"></br>
+                    <img :src="post.image"  alt="" style="width: 50%; height: 50%;"></br>
                     <strong>{{post.name}}</strong><br></br>
                       <i class="fa fa-clock-o"></i> {{post.startdate}} | {{post.starttime}} - {{post.starttime}}  </br>
                       <i class="fa fa-map-marker"></i> {{post.location}}
@@ -92,7 +90,7 @@
                               *Some fees may be applied
                               </div>
 
-                              <div class="column" v-if ="post.amount > 1 " @click="buy(key, bye)">
+                              <div class="column" v-if ="post.amount > 0 " @click="buy(key, bye)">
                                 <p class="button is-primary"  style=" float: right; ">
                                     <span>Buy Ticksts</span>
                                   </p>
@@ -167,8 +165,10 @@ export default {
             return data - bye
           }
         }
+        alert('ซื้อสินค้าเรียบร้อย')
         return data
       })
+      this.pullData()
     }
   },
   created () {

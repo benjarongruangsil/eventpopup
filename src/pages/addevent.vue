@@ -6,8 +6,6 @@
   <router-link to="/">
 <img src="../assets/logo3.png" alt="" height="500" width=""> </router-link> </a>
 <p class="navbar-item">
-  <input class="input" type="text" placeholder="---- Search ----">&nbsp&nbsp&nbsp&nbsp
-  <span class="icon is-small is-right"><p></p><i class="fa fa-search"></i></span></p>
 <div class="navbar-menu">
   <div class="navbar-end">
     <div class="navbar-item">
@@ -74,7 +72,7 @@
                         <div class="field-body">
                         <div class="field">
                         <p class="control is-expanded has-icons-left">
-                          <input class="input" type="date" placeholder="date" v-model="data.startdate">
+                          <input class="input" type="date" placeholder="date" v-model="data.startdate" required>
                           <span class="icon is-small is-left">
                             <i class="fa fa-calendar"></i>
                           </span>
@@ -82,7 +80,7 @@
                       </div> to&nbsp&nbsp
                         <div class="field">
                         <p class="control is-expanded has-icons-left has-icons-right">
-                          <input class="input " type="date" placeholder="date" v-model="data.enddate">
+                          <input class="input " type="date" placeholder="date" v-model="data.enddate"required>
                           <span class="icon is-small is-left">
                             <i class="fa fa-calendar"></i>
                           </span>
@@ -98,7 +96,7 @@
               <div class="field-body">
               <div class="field">
               <p class="control is-expanded has-icons-left">
-                <input class="input" type="time" placeholder="time" v-model="data.starttime">
+                <input class="input" type="time" placeholder="time" v-model="data.starttime"required>
                 <span class="icon is-small is-left">
                   <i class="fa fa-clock-o"></i>
                 </span>
@@ -106,7 +104,7 @@
             </div> to&nbsp&nbsp
               <div class="field">
               <p class="control is-expanded has-icons-left has-icons-right">
-                <input class="input " type="time" placeholder="time" v-model="data.endtime" >
+                <input class="input " type="time" placeholder="time" v-model="data.endtime"required >
                 <span class="icon is-small is-left">
                   <i class="fa fa-clock-o"></i>
                 </span>
@@ -124,7 +122,7 @@
                   <div class="control">
                     <div class="field">
                     <p class="control is-expanded has-icons-left has-icons-right">
-                      <input class="input "  placeholder="amount" v-model="data.amount" >
+                      <input class="input " type="number" placeholder="amount" v-model="data.amount"required >
                       <span class="icon is-small is-left">
                         <i class="fa fa-sort-numeric-asc"></i>
                       </span>
@@ -144,7 +142,7 @@
                   <div class="control">
                     <div class="field">
                     <p class="control is-expanded has-icons-left has-icons-right">
-                      <input class="input " placeholder="price" v-model="data.price">
+                      <input class="input " type="number" placeholder="price" v-model="data.price"required>
                       <span class="icon is-small is-left">
                         <i class="fa fa-money"></i>
                       </span>
@@ -165,7 +163,7 @@
                     <div class="field">
                       <div class="file is-boxed">
                           <label class="file-label">
-                            <input class="file-input" type="file" name="resume"  @change="onFileChange($event.target.files[0])">
+                            <input class="file-input" type="file" name="resume"  @change="onFileChange($event.target.files[0])"required>
                             <span class="file-cta">
                               <span class="file-icon">
                                 <i class="fa fa-upload"></i>
@@ -189,7 +187,7 @@
                   <div class="field-body">
                   <div class="field">
                   <div class="control">
-                    <textarea class="textarea" placeholder="ใส่รายละเอียดงาน" v-model="data.description"></textarea>
+                    <textarea class="textarea" placeholder="ใส่รายละเอียดงาน" v-model="data.description"required></textarea>
                   </div>
                   </div>
                   </div>
@@ -260,15 +258,19 @@ export default {
       this.insertPost(this.newPostInput)
     },
     async addevent () {
-      console.log('pass')
-      let urlsImg = await this.createImage()
-      this.data.image = urlsImg.downloadURL
-      this.nameuser = this.user.displayName
-      this.data.users = this.user.displayName
-      firebase.database().ref('event/post/').push(this.data)
-      firebase.database().ref('event/user/' + this.nameuser).push(this.data)
-      alert('Add event Complete')
-      this.data = ''
+      if (this.data.name === '' || this.data.location === '' || this.data.startdate === '' || this.data.enddate === '' || this.data.amount === '' || this.data.price === '' || this.data.description === '') {
+        alert('กรุณากรอกข้อมูลให้ครบ')
+      } else {
+        console.log('pass')
+        let urlsImg = await this.createImage()
+        this.data.image = urlsImg.downloadURL
+        this.nameuser = this.user.displayName
+        this.data.users = this.user.displayName
+        firebase.database().ref('event/post/').push(this.data)
+        firebase.database().ref('event/user/' + this.nameuser).push(this.data)
+        alert('Add event Complete')
+        this.data = ''
+      }
     },
     clear () {
       this.data = ''
@@ -280,9 +282,6 @@ export default {
       const storageRef = firebase.storage().ref('image/' + this.dataImg.name.toLowerCase().split(' ').join('-'))
       const uploadTask = storageRef.put(this.dataImg)
       return uploadTask
-    },
-    removeImage: function (e) {
-      this.data.image = ''
     }
   },
   created () {

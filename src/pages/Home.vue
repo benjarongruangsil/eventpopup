@@ -7,8 +7,6 @@
   <router-link to="/">
 <img src="../assets/logo3.png" alt="" height="500" width=""> </router-link></a>
 <p class="navbar-item">
-  <input class="input" type="text" placeholder="---- Search ----">&nbsp&nbsp&nbsp&nbsp
-  <span class="icon is-small is-right"><p></p><i class="fa fa-search"></i></span></p>
 <div class="navbar-menu">
   <div class="navbar-end">
     <div class="navbar-item">
@@ -55,7 +53,7 @@
                 <article class="message is-dark" >
                 <div class="message-body">
                   <figure class="image is-square">
-                   <img :src="post.img">
+                   <img :src="post.image">
                   </figure>
                   <strong>{{post.name}}</strong><br></br>
                     <i class="fa fa-clock-o"></i> {{post.startdate}} | {{post.starttime}} - {{post.starttime}}  </br>

@@ -7,8 +7,6 @@
   <router-link to="/">
 <img src="../assets/logo3.png" alt="" height="500" width=""> </router-link> </a>
 <p class="navbar-item">
-  <input class="input" type="text" placeholder="---- Search ----">&nbsp&nbsp&nbsp&nbsp
-  <span class="icon is-small is-right"><p></p><i class="fa fa-search"></i></span></p>
 <div class="navbar-menu">
   <div class="navbar-end">
     <div class="navbar-item">
@@ -51,7 +49,7 @@
               <div class="message-body">
                 <div class="columns">
                   <div class="column">
-                    <img src="https://bulma.io/images/placeholders/256x256.png"  style=" float:left; margin-right: 2%; ">
+                    <img :src="post.image"  style=" float:left; margin-right: 2%; ">
                     <strong>{{post.name}}</strong><br></br>
                       <i class="fa fa-clock-o"></i> {{post.startdate}} - {{post.enddate}} | {{post.starttime}} - {{post.starttime}}  </br>
                       <i class="fa fa-map-marker"></i> {{post.location}}</br>
@@ -83,7 +81,7 @@
                 <div class="message-body">
                   <div class="columns">
                     <div class="column">
-                      <img src="https://bulma.io/images/placeholders/256x256.png"  style=" float:left; margin-right: 2%; ">
+                      <img :src="post.image"  style=" margin-right: 2%; "> </br></br></br>
 
                       <div class="field is-horizontal">
               <div class="field-label is-normal">
@@ -166,7 +164,7 @@
               <div class="control">
                 <div class="field">
                 <p class="control is-expanded has-icons-left has-icons-right">
-                  <input class="input "  placeholder="amount" v-model="post.amount" >
+                  <input class="input " type="number" placeholder="amount" v-model="post.amount" >
                   <span class="icon is-small is-left">
                     <i class="fa fa-sort-numeric-asc"></i>
                   </span>
@@ -186,7 +184,7 @@
               <div class="control">
                 <div class="field">
                 <p class="control is-expanded has-icons-left has-icons-right">
-                  <input class="input " placeholder="price" v-model="post.price">
+                  <input class="input " type="number"placeholder="price" v-model="post.price">
                   <span class="icon is-small is-left">
                     <i class="fa fa-money"></i>
                   </span>
@@ -236,7 +234,6 @@
               </div>
               </div>
               </div>
-
                       </br></br></br>
                         <p class="button is-success  is-outlined" style=" float:right; margin-left: 2%;"   @click="Update(key, post.name, post.amount, post.description, post.enddate, post.endtime, post.location, post.photo, post.price, post.startdate, post.starttime)" >
                           <span>Save</span>
@@ -327,9 +324,9 @@ export default {
       this.data = ''
     },
     Update: function (key, name, amount, description, enddate, endtime, location, photo, price, startdate, starttime) {
+      this.checkEdit = ''
       console.log(key)
       firebase.database().ref('event/post/').child(key).update({name: name, amount: amount, description: description, enddate: enddate, endtime: endtime, location: location, photo: photo, price: price, startdate: startdate, starttime: starttime})
-      this.checkEdit = ''
     },
     swap: function (key) {
       this.checkEdit = key
