@@ -6,7 +6,7 @@
   <router-link to="/">
 <img src="../assets/logo3.png" alt="" height="500" width=""> </router-link> </a>
 <p class="navbar-item">
-  <input class="input" type="text" placeholder="Amount of money">
+  <input class="input" type="text" placeholder="---- Search ----">&nbsp&nbsp&nbsp&nbsp
   <span class="icon is-small is-right"><p></p><i class="fa fa-search"></i></span></p>
 <div class="navbar-menu">
   <div class="navbar-end">
@@ -40,7 +40,7 @@
   <div class="column is-two-thirds">
     <article class="message is-dark">
       <div class="message-header">
-        <p>add event pop</p>
+        <p>ADD EVENT POP</p>
       </div>
       <div class="message-body">
                           <div class="field is-horizontal">
@@ -79,7 +79,7 @@
                             <i class="fa fa-calendar"></i>
                           </span>
                         </p>
-                      </div> to
+                      </div> to&nbsp&nbsp
                         <div class="field">
                         <p class="control is-expanded has-icons-left has-icons-right">
                           <input class="input " type="date" placeholder="date" v-model="data.enddate">
@@ -103,7 +103,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
               </p>
-            </div> to
+            </div> to&nbsp&nbsp
               <div class="field">
               <p class="control is-expanded has-icons-left has-icons-right">
                 <input class="input " type="time" placeholder="time" v-model="data.endtime" >
