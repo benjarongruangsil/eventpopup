@@ -38,7 +38,7 @@
 <div class="columns">
   <div class="column"></div>
   <div class="column is-two-thirds">
-    <article class="message  is-danger">
+    <article class="message is-dark">
       <div class="message-header">
         <p>ADD EVENT POP</p>
       </div>
@@ -164,6 +164,14 @@
                   <div class="control">
                     <div class="field">
                       <div class="file is-boxed">
+                        <input class="file-input" type="file">
+                        <input name="myFile" type="file" @change="onFileChange($event.target.files[0])">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="control">
+                    <div class="field">
+                      <div class="file is-boxed">
                           <label class="file-label"  v-if="!data.image">
                             <input class="file-input" type="file" name="resume" @change="onFileChange">
                             <span class="file-cta">
@@ -183,7 +191,7 @@
                           </div>
                         </div>
                     </div>
-                  </div>
+                  </div> -->
                   </div>
                   </div>
                   </div>
@@ -244,9 +252,9 @@ export default {
         image: '',
         description: '',
         users: ''
-
       },
-      nameuser: ''
+      nameuser: '',
+      dataImg: {}
     }
   },
   computed: {
@@ -265,8 +273,10 @@ export default {
     submitPost () {
       this.insertPost(this.newPostInput)
     },
-    addevent () {
+    async addevent () {
       console.log('pass')
+      let urlsImg = await this.createImage()
+      this.data.image = urlsImg.downloadURL
       this.nameuser = this.user.displayName
       this.data.users = this.user.displayName
       firebase.database().ref('event/post/').push(this.data)
@@ -277,17 +287,13 @@ export default {
     clear () {
       this.data = ''
     },
-    onFileChange (e) {
-      var files = e.target.files
-      this.createImage(files[0])
+    onFileChange (fileImg) {
+      this.dataImg = fileImg
     },
-    createImage (file) {
-      let reader = new FileReader()
-      reader.onload = (e) => {
-        this.data.image = e.target.result
-        console.log(this.data.image)
-      }
-      reader.readAsDataURL(file)
+    createImage () {
+      const storageRef = firebase.storage().ref('image/' + this.dataImg.name.toLowerCase().split(' ').join('-'))
+      const uploadTask = storageRef.put(this.dataImg)
+      return uploadTask
     },
     removeImage: function (e) {
       this.data.image = ''
