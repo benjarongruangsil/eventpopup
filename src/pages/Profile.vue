@@ -45,18 +45,21 @@
     <div class="column is-three-quarters">
       <div class="columns" >
         <div class="column">
-            <div class="" style="width: 30%; float: left; margin-left: 2%;" v-for = "(post, key, count) in showpost"  >
+            <div class="" style="width: 100%;" v-if="checkEdit !== key" v-for = "(post, key, count) in showpost"  >
                 <div class="" v-if= "user.displayName === post.users">
               <article class="message is-dark" >
               <div class="message-body">
-                <figure class="image is-square">
-                 <img src="https://bulma.io/images/placeholders/256x256.png">
-                </figure>
-                <strong>{{post.name}} {{count+1}}</strong><br></br>
-                  <i class="fa fa-clock-o"></i> {{post.startdate}} | {{post.starttime}} - {{post.starttime}}  </br>
-                  <i class="fa fa-map-marker"></i> {{post.location}}
-                </br></br></br>
-                      <p class="button is-success  is-outlined">
+                <div class="columns">
+                  <div class="column">
+                    <img src="https://bulma.io/images/placeholders/256x256.png"  style=" float:left; margin-right: 2%; ">
+                    <strong>{{post.name}}</strong><br></br>
+                      <i class="fa fa-clock-o"></i> {{post.startdate}} - {{post.enddate}} | {{post.starttime}} - {{post.starttime}}  </br>
+                      <i class="fa fa-map-marker"></i> {{post.location}}</br>
+                      <strong>Amount :    </strong>{{post.amount}}</br>
+                      <strong>Price :    </strong>{{post.price}}</br>
+                      <strong>Description </strong></br>{{post.description}}</br>
+                    </br></br></br>
+                      <p class="button is-success  is-outlined" style=" float:right; margin-left: 2%;"   @click="swap(key)" >
                         <span>Update</span>
                         <span class="icon is-small">
                             <i class="fa fa-refresh"></i>
@@ -68,14 +71,193 @@
                            <i class="fa fa-trash"></i>
                          </span>
                    </p>
+                  </div>
+                </div>
             </div>
-            </article></div>
+          </article> </br></div>
           </div>
+
+          <div class="" style="width: 100%;" v-else   >
+              <div class="" v-if= "user.displayName === post.users">
+                <article class="message is-dark" >
+                <div class="message-body">
+                  <div class="columns">
+                    <div class="column">
+                      <img src="https://bulma.io/images/placeholders/256x256.png"  style=" float:left; margin-right: 2%; ">
+
+                      <div class="field is-horizontal">
+              <div class="field-label is-normal">
+              <label class="label">EVENT</label>
+              </div>
+              <div class="field-body">
+              <div class="field">
+              <p class="control is-expanded has-icons-left">
+                <input class="input" type="text" placeholder="Name"  v-model="post.name" >
+                <span class="icon is-small is-left">
+                  <i class="fa fa-bicycle"></i>
+                </span>
+              </p>
+              </div>
+              <div class="field">
+              <p class="control is-expanded has-icons-left has-icons-right">
+                <input class="input "  type="text"  v-model="post.location" placeholder="Location" value="alex@smith.com" >
+                <span class="icon is-small is-left">
+                  <i class="fa fa-map-marker"></i>
+                </span>
+              </p>
+              </div>
+              </div>
+              </div>
+
+              <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                    <label class="label">DATE</label>
+                    </div>
+                    <div class="field-body">
+                    <div class="field">
+                    <p class="control is-expanded has-icons-left">
+                      <input class="input" type="date" placeholder="date" v-model="post.startdate">
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-calendar"></i>
+                      </span>
+                    </p>
+                  </div> to
+                    <div class="field">
+                    <p class="control is-expanded has-icons-left has-icons-right">
+                      <input class="input " type="date" placeholder="date" v-model="post.enddate">
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-calendar"></i>
+                      </span>
+                    </p>
+                    </div>
+                    </div>
+                    </div>
+
+                  <div class="field is-horizontal">
+          <div class="field-label is-normal">
+          <label class="label">TIME</label>
+          </div>
+          <div class="field-body">
+          <div class="field">
+          <p class="control is-expanded has-icons-left">
+            <input class="input" type="time" placeholder="time" v-model="post.starttime">
+            <span class="icon is-small is-left">
+              <i class="fa fa-clock-o"></i>
+            </span>
+          </p>
+        </div> to
+          <div class="field">
+          <p class="control is-expanded has-icons-left has-icons-right">
+            <input class="input " type="time" placeholder="time" v-model="post.endtime" >
+            <span class="icon is-small is-left">
+              <i class="fa fa-clock-o"></i>
+            </span>
+          </p>
+          </div>
+          </div>
+          </div>
+
+              <div class="field is-horizontal">
+              <div class="field-label is-normal">
+              <label class="label">AMOUNT</label>
+              </div>
+              <div class="field-body">
+              <div class="field is-narrow">
+              <div class="control">
+                <div class="field">
+                <p class="control is-expanded has-icons-left has-icons-right">
+                  <input class="input "  placeholder="amount" v-model="post.amount" >
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-sort-numeric-asc"></i>
+                  </span>
+                </p>
+                </div>
+              </div>
+              </div>
+              </div>
+              </div>
+
+              <div class="field is-horizontal">
+              <div class="field-label is-normal">
+              <label class="label">PRICE</label>
+              </div>
+              <div class="field-body">
+              <div class="field is-narrow">
+              <div class="control">
+                <div class="field">
+                <p class="control is-expanded has-icons-left has-icons-right">
+                  <input class="input " placeholder="price" v-model="post.price">
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-money"></i>
+                  </span>
+                </p>
+                </div>
+              </div>
+              </div>
+              </div>
+              </div>
+
+              <div class="field is-horizontal">
+              <div class="field-label is-normal">
+              <label class="label">PHOTO</label>
+              </div>
+              <div class="field-body">
+              <div class="field is-narrow">
+              <div class="control">
+                <div class="field">
+                  <div class="file is-boxed">
+                      <label class="file-label">
+                        <input class="file-input" type="file" name="resume" @change="post.photo" v-on="post.photo">
+                        <span class="file-cta">
+                          <span class="file-icon">
+                            <i class="fa fa-upload"></i>
+                          </span>
+                          <span class="file-label">
+                            Choose a file…
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                </div>
+              </div>
+              </div>
+              </div>
+              </div>
+
+              <div class="field is-horizontal">
+              <div class="field-label is-normal">
+              <label class="label">DESCRIPTION</label>
+              </div>
+              <div class="field-body">
+              <div class="field">
+              <div class="control">
+                <textarea class="textarea" placeholder="ใส่รายละเอียดงาน" v-model="post.description"></textarea>
+              </div>
+              </div>
+              </div>
+              </div>
+
+                      </br></br></br>
+                        <p class="button is-success  is-outlined" style=" float:right; margin-left: 2%;"   @click="Update(key, post.name, post.amount, post.description, post.enddate, post.endtime, post.location, post.photo, post.price, post.startdate, post.starttime)" >
+                          <span>Save</span>
+                          <span class="icon is-small">
+                              <i class="fa fa-check"></i>
+                            </span>
+                      </p>
+                    </div>
+                  </div>
+              </div>
+              </article>
+
+
+
+            </div>
+        </div>
+
+
         </div>
       </div>
     </div>
-
-
 <div class="column"></div>
 </div>
 </div>
@@ -93,7 +275,22 @@ export default {
     return {
       newPostInput: '',
       showpost: '',
-      nameuser: ''
+      nameuser: '',
+      data: {
+        name: '',
+        location: '',
+        startdate: '',
+        enddate: '',
+        starttime: '',
+        endtime: '',
+        amount: '',
+        price: '',
+        photo: '',
+        description: '',
+        users: ''
+      },
+      checkEdit: ''
+
     }
   },
   computed: {
@@ -124,6 +321,18 @@ export default {
       this.nameuser = this.user.displayName
       firebase.database().ref('/event/post/').child(key).remove()
       this.pullData()
+    },
+    clear () {
+      console.log('asd')
+      this.data = ''
+    },
+    Update: function (key, name, amount, description, enddate, endtime, location, photo, price, startdate, starttime) {
+      console.log(key)
+      firebase.database().ref('event/post/').child(key).update({name: name, amount: amount, description: description, enddate: enddate, endtime: endtime, location: location, photo: photo, price: price, startdate: startdate, starttime: starttime})
+      this.checkEdit = ''
+    },
+    swap: function (key) {
+      this.checkEdit = key
     }
   },
   created () {
@@ -132,16 +341,6 @@ export default {
   },
   destroyed () {
     this.unSetPostRef()
-  },
-  prompt () {
-    this.$dialog.prompt({
-      message: 'What s your name?',
-      inputAttrs: {
-        placeholder: 'e.g. Walter',
-        maxlength: 10
-      },
-      onConfirm: (value) => this.$toast.open(`Your name is: ${value}`)
-    })
   }
 }
 </script>

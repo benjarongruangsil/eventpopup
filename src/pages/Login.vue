@@ -2,24 +2,9 @@
   <div class="login--container">
   <section class="hero is-primary">
     <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-  <a class="navbar-item">
-  <img src="../assets/logo3.png" alt="" height="500" width=""></a>
+  
   <div class="navbar-end">
-    <div class="navbar-item">
-      <div class="field is-grouped">
-        <p class="control">
-          <p class="bd-tw-button button" @click="login()">
-            <span class="icon">
-              <i class="fa fa-facebook-square"></i>
-            </span>
-            <span>facebook</span>
-          </p>
-        </p>
-      </div>
-    </div>
-  </div>
-  </nav>
-  </section>
+
 </br>
 <!-- ส่วนของข้อมูล -->
 <div class="">
@@ -47,6 +32,27 @@
 </div>
 </div>
 <!-- จบส่วนของข้อมูล -->
+<<<<<<< HEAD
+=======
+<br>
+<br>
+<center> <img src="http://kkfund.co/img/portfolio/EventPop.png"> </center>
+<div class="navbar-item">
+  <div class="field is-grouped">
+    <p class="control">
+      <p class="bd-tw-button button" @click="login()">
+        <span class="icon">
+          <i class="fa fa-facebook-square"></i>
+        </span>
+        <span>facebook</span>
+      </p>
+    </p>
+  </div>
+</div>
+</div>
+</nav>
+</section>
+>>>>>>> 8d1787282c8d46d2c0e85447683f7c90b92a38eb
   </div>
 
 </template>
